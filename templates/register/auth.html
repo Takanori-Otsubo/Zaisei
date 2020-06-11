@@ -1,0 +1,92 @@
+{% extends "mysite/base.html" %}
+
+{% load static %}
+
+{% block header %}
+    <link rel="stylesheet" type="text/css" href="{% static 'register/css/auth.css' %}">
+{% endblock %}
+
+{% block container %}
+    <div id="start_button">
+        <button class="button" onclick="document.getElementById('login').style.display='block'"
+            style="width:auto;"><i class="fas fa-sign-in-alt"></i> ログイン
+        </button>
+
+        <button class="button" onclick="document.getElementById('create').style.display='block'"
+            style="width:auto;"><i class="fas fa-address-card"></i> 新規作成
+        </button>
+    </div>
+
+    <div id="login" class="modal" style="{{ login_style }}">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <span onclick="document.getElementById('login').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <div class="card-body">
+                    <form action="{% url 'register:auth' %}" method="POST">
+                        {% csrf_token %}
+                        <table class="table">
+                            <tbody>
+                                {{ login_form.non_field_errors }}
+                                {% for field in login_form %}
+                                <tr>
+                                    <th><label for="{{ field.id_for_label }}">{{ field.label }}</label></th>
+                                    <td>{{ field }} {{ field.errors }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <button type="submit" class="btn btn-success btn-lg btn-block" >ログイン</button>
+                        <input type="hidden" name="login"/>
+                    </form>
+                </div>
+                <span class="psw"><a href="{% url 'register:password_forget' %}">パスワードを忘れた</a></span>
+            </div>
+        </div>
+    </div>
+
+    <div id="create" class="modal" style="{{ create_style }}">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <span onclick="document.getElementById('create').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <div class="card-body">
+                    <form action="{% url 'register:auth' %}" method="POST">
+                        {% csrf_token %}
+                        {{ create_msg }}
+                        <table class="table">
+                            <tbody>
+                                {{ create_form.non_field_errors }}
+                                {% for field in create_form %}
+                                <tr>
+                                    <th><label for="{{ field.id_for_label }}">{{ field.label }}</label></th>
+                                    <td>{{ field }} {{ field.errors }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <button type="submit" class="btn btn-success btn-lg btn-block" >新規作成</button>
+                        <input type="hidden" name="create" />
+                    </form>
+                    <p class="psw">※初期パスワードを知らない場合は---へご連絡ください</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    <script>
+        const section= {
+            {% for department in department_list %}
+                '{{ department.pk }}': [
+                    {% for section in department.section.all %}
+                        {
+                            'pk': '{{ section.pk }}',
+                            'name': '{{ section.name }}'
+                        },
+                    {% endfor %}
+                ],
+            {% endfor %}
+        };
+    </script>
+    <script src="{% static 'register/js/auth.js' %}" charset="utf-8"></script>
+{% endblock %}

@@ -1,0 +1,6 @@
+{% for category in category_list|dictsort:"id" %}
+<li class="list-group-item d-flex justify-content-between align-items-center">
+    <a href="{% url 'mysite:category_index' category.slug %}" class="card-link">{{ category.name }}</a>
+    <span class="badge badge-primary badge-pill">{{ category.num_posts }}</span>
+</li>
+{% endfor %}

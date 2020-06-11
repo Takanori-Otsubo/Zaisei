@@ -1,0 +1,47 @@
+{% extends "mysite/base.html" %}
+{% load static %}
+
+{% block header %}
+    <link rel="stylesheet" type="text/css" href="{% static 'register/css/forget_password.css' %}">
+{% endblock %}
+
+{% block container %}
+    <div class="card">
+        <div class="card-body">
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                <table class="table">
+                    <tbody>
+                        {% for field in form %}
+                            <tr>
+                                <th><label for="{{ field.id_for_label }}">{{ field.label }}</label></th>
+                                <td>{{ field }} {{ field.errors }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% csrf_token %}
+                <button type="submit" class="btn btn-success btn-lg btn-block" >送信</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    <script>
+        const section= {
+            {% for department in department_list %}
+                '{{ department.pk }}': [
+                    {% for section in department.section.all %}
+                        {
+                            'pk': '{{ section.pk }}',
+                            'name': '{{ section.name }}'
+                        },
+                    {% endfor %}
+                ],
+            {% endfor %}
+        };
+    </script>
+    <script src="{% static 'register/js/user_update.js' %}" charset="utf-8"></script>
+{% endblock %}

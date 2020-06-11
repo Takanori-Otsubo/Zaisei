@@ -1,0 +1,17 @@
+{% regroup dates by month.year as dates_by_year %}
+<ul>
+    {% for group in dates_by_year %}
+        <li class="archive-module-year">
+            <span class="archive-module-button">▶</span>
+            <a href="{% url 'mysite:post_year_archive' group.grouper %}">
+                {{ group.grouper }}年</a>
+            <ul class="archive-module-month">
+                {% for d in group.list %}
+                <li><a href="{% url 'mysite:post_month_archive' group.grouper d.month.month %}">
+                    {{ group.grouper }}年{{ d.month |date:'F' }} ({{ d.count }})</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,25 @@
+{% extends "mysite/base.html" %}
+{% load static %}
+
+{% block header %}
+    <link rel="stylesheet" type="text/css" href="{% static 'mysite/css/index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'mysite/css/calendar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'mysite/css/post.css' %}">
+{% endblock %}
+
+{% block container %}
+<div class="row">
+    <main class="col-md-8">
+        {% include post_content_html %}
+    </main>
+    <aside class="col-md-4">
+        {% include "mysite/snippets/sidebar.html" %}
+    </aside>
+</div>
+{% endblock %}
+
+{% block footer %}
+    <script type="text/javascript" src="{% static 'mysite/js/calendar.js' %}"></script>
+    <script type="text/javascript" src="{% static 'mysite/js/index.js' %}"></script>
+    <script type="text/javascript" src="{% static 'mysite/js/post.js' %}"></script>
+{% endblock %}

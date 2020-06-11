@@ -1,0 +1,20 @@
+{% extends 'mysite/base.html' %}
+{% load static %}
+
+{% block header %}
+	<link rel="stylesheet" type="text/css" href="{% static 'mysite/css/calendar.css' %}">
+{% endblock %}
+
+{% block footer %}
+	<script src="{% static 'mysite/js/calendar.js' %}" charset="utf-8"></script>
+{% endblock %}
+
+{% block container %}
+<div class="calendar">
+	<div class="clearfix" style="text-align:center;">
+		<a class="btn btn-info left" href="{% url 'mysite:calendar' %}?{{ prev_month | safe }}"> <i class="fas fa-caret-left"></i>　前月</a>
+		<a class="btn btn-info right" href="{% url 'mysite:calendar' %}?{{ next_month | safe }}"> 翌月　<i class="fas fa-caret-right"></i> </a>
+	</div>
+	{{ calendar | safe }}
+</div>
+{% endblock %}

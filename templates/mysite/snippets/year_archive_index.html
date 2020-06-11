@@ -1,0 +1,27 @@
+{% load static %}
+
+<h2>{{ year.year }}年の全ての記事</h2>
+{% for post in post_list %}
+<div class="article-card">
+    <div class="row m-b-3">
+        <div class="col-xs-12 col-sm-4 text-xs-center">
+            {% if post.thumbnail %}
+              <img class="img-thumbnail" src="{{ post.thumbnail.url }}">
+            {% else %}
+              <img class="img-thumbnail" src="{% static '/mysite/image/No_Image.png' %}">
+            {% endif %}
+        </div>
+        <div class="col-xs-12 col-sm-8">
+            <h4 class="post-title">{{ post.title }}</h4>
+            <div class="post-detail">
+                <span class="text-muted">{{ post.published_at }} 　</span>
+                <span class="tag tag-primary"><a href="{% url 'mysite:category_index' post.category.slug %}">{{ post.category }}</a></span>
+                <p class="beginning">{{ post.description | safe }}</p>
+            </div>
+            <a class="btn btn-outline-primary btn-lg btn-block"
+               href="{% url 'mysite:post_detail' post.pk %}">続きを読む</a>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% include "mysite/snippets/pagination.html" %}

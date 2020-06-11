@@ -1,0 +1,119 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name= "viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+              integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{% static 'mysite/css/base.css' %}">
+        {% block header %}{% endblock %}
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+        <title>{% if user.is_authenticated %}財政支部{% else %}ログイン{% endif %}</title>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <div id="topline">
+            <ul id="toplinemenu">
+                <li class="topline"><a href="{% url 'mysite:top' %}">ホーム</a></li>
+                {% if user.is_authenticated %}
+                <li class="topline"><a href="{% url 'register:user_update' user.pk %}">
+                    {{ user.get_username }} でログイン中 </a></li>
+                <li class="topline"><a href="{% url 'mysite:logout' %}">ログアウト</a></li>
+                {% else %}
+                <li class="topline">未ログイン</li>
+                {% endif %}
+                <li class="topline">
+                    <a onclick="document.getElementById('setting-modal').style.display='block'"style="width:auto;" href="#">
+                        設定
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="setting-modal">
+            <div id="setting-modal-content">
+                <div class="blackboard">
+                    <p>＊どの項目を変更しますか？</p>
+                </div>
+
+                <div class="clearfix">
+                    <div class="blackboard">
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'register:password_change' %}" class="blink-before">パスワード変更</a>
+                        <br>
+                        <a href ="{% url 'register:user_update' user.pk %}" class="blink-before">ユーザー情報更新</a>
+                        <br>
+                        <a onclick="document.getElementById('setting-modal').style.display='none'"
+                           style="width:auto;" href ="#" class="blink-before">
+                            閉じる
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% if q_flag %}
+        <div id="questionnaire-modal">
+            <div id="questionnaire-modal-content">
+                <div class="blackboard">
+                    <p>"{{ q_title }}"への回答をお願いします。</p>
+                </div>
+
+                <div class="clearfix">
+                    <div class="blackboard">
+                        <a href="{% url q_url %}" class="blink-before">はい</a>
+                        <br>
+                        <a onclick="document.getElementById('questionnaire-modal').style.display='none'"
+                           style="width:auto;" href ="#" class="blink-before">いいえ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} " style="padding-top:50px">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif  %}
+
+        <div id = "header">
+            <a href="{% url 'mysite:top' %}">
+                <img src="{% static 'mysite/image/top_header.jpg' %}">
+            </a>
+        </div>
+
+        <!-- メインコンテント -->
+        <div class="container">
+            <div class="container-inner">
+                {% block title %}{% endblock %}
+                {% block container %}{% endblock %}
+            </div>
+        </div>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+                crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+                integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+                crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+                integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+                crossorigin="anonymous"></script>
+        <script src="{% static 'mysite/js/base.js' %}" charset="utf-8"></script>
+        {% block footer %}{% endblock %}
+
+    </body>
+</html>

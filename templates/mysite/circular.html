@@ -1,0 +1,31 @@
+{% extends "mysite/base.html" %}
+{% load static %}
+
+{% block header %}
+    <link rel="stylesheet" type="text/css" href="{% static 'mysite/css/circular.css' %}">
+{% endblock %}
+
+{% block container %}
+    <div class="note">
+        <h2>回     覧</h2>
+        {% for circular in circular_list %}
+            <div class="circular" id="{{ circular.id }}" data-href="/media/{{ circular.file }}">
+                {% if user.username in circular.read_user_list %}
+                    <span class="stamp">済</span>
+                {% else %}
+                    <span class="none-stamp">済</span>
+                {% endif %}
+                    <a href="#">
+                        <span class="published-at">{{ circular.published_at }} </span>
+                        <span class="title">{{ circular.title }} </span>
+                        <span class="detail">{{ circular.detail }} </span>
+                    </a>
+             </div>
+        {% endfor %}
+    </div>
+    {% include "mysite/snippets/pagination.html" %}
+{% endblock %}
+
+{% block footer %}
+<script type="text/javascript" src="{% static 'mysite/js/circular.js' %}"></script>
+{% endblock %}

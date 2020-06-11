@@ -1,0 +1,63 @@
+<div id="post-category">
+    <a href="{% url 'mysite:category_index' object.category.slug %}"><p>{{ object.category.name }}</p></a>
+</div>
+
+{% load static %}
+
+<div id="post-header">
+    <p id="post-time"><i class="fas fa-clock"></i>{{ object.published_at|date }}</p>
+    <h1>{{ object.title }}</h1>
+</div>
+<hr>
+<div id="post-content">
+    {{ object.content|safe }}
+</div>
+<div id="comment">
+    <form action="{% url 'mysite:add_post_comment' object.pk %}" method="POST">
+        <p> 名前
+            <select name="user-name">
+                <option selected="selected">{{ user.username }}</option>
+                <option>{{ user.get_belongs }} 所属</option>
+                <option>No Name</option>
+            </select>
+        </p>
+        {% csrf_token %}
+        <textarea name="text" id="com" cols="50" rows="5"></textarea>
+        <button type="submit">投稿</button>
+    </form>
+    <div class="comment-area">
+        {% for comment in post.comments.all %}<!-- 記事に対するコメントを全件取得 -->
+        {% if comment.is_public %}
+        <div class="comment-detail">
+            <div class="comment-user col-2">
+                <img class="comment-user-logo" src="{% static '/mysite/image/comment_user.jpg' %}">
+            </div>
+            <div class="says col-9">
+                <p class="comment-user-detail">{{ comment.displayed_user}}
+                    {% if comment.displayed_user == user.username %}
+                        {{ user.get_belongs }}
+                    {% endif %}
+                </p>
+                <p>{{ comment.text }}</p>
+                <p class="comment-posted-at"> {{ comment.posted_at }}</p>
+            </div>
+        </div>
+        {% for reply in comment.reply_set.all %}
+        <div class="mycomment col-11">
+            <p class="comment-user-detail">{{ reply.user}} ({{ reply.user.union_class }})</p>
+            <p>{{ reply.text | safe }}</p>
+            <p class="comment-posted-at"> {{ reply.posted_at }}</p>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="comment-detail">
+            <div class="commentContents">
+                <div class="comment-text">承認待ちのコメントです</div>
+            </div>
+        </div>
+        {% endif %}
+        {% empty %}
+        <p>コメントはありません</p>
+        {% endfor %}
+    </div>
+</div>

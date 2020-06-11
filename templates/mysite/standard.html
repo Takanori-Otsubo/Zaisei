@@ -1,0 +1,77 @@
+{% extends "mysite/base.html" %}
+{% load static %}
+
+{% block header %}
+<link rel="stylesheet" type="text/css" href="{% static 'mysite/css/standard.css' %}">
+{% endblock %}
+
+{% block container %}
+    <div class="standard row">
+        <li class="category col-sm-6 col-md-6">
+            <h2>組織</h2>
+            <ul type="none" class="standard-ul">
+                {% for standard in standard_list %}
+                    {% if standard.category_level == 0 %}
+                        <li id="{{ standard.title }}" class="standard-btn">
+                            <div class="standard-title"><span class="toggle-state">▶</span>
+                                {{ standard.title }}
+                            </div>
+                            <div class="standard-content wboard-w3">{{ standard.content | safe }}</div>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </li>
+        <li class="category col-sm-6 col-md-6">
+            <h2>年中行事</h2>
+            <ul type="none" class="standard-ul">
+                {% for standard in standard_list %}
+                    {% if standard.category_level == 1 %}
+                        <li id="{{ standard.title }}" class="standard-btn">
+                            <div class="standard-title"><span class="toggle-state">▶</span>
+                                {{ standard.title }}
+                            </div>
+                            <div class="standard-content wboard-w3">{{ standard.content | safe }}</div>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </li>
+    </div>
+    <div class="standard row">
+        <li class="category col-sm-6 col-md-6">
+            <h2>用語</h2>
+            <ul type="none" class="standard-ul">
+                {% for standard in standard_list %}
+                    {% if standard.category_level == 2 %}
+                        <li id="{{ standard.title }}" class="standard-btn">
+                            <div class="standard-title"><span class="toggle-state">▶</span>
+                                {{ standard.title }}
+                            </div>
+                            <div class="standard-content wboard-w3">{{ standard.content | safe }}</div>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </li>
+        <li class="category col-sm-6 col-md-6">
+            <h2>労働問題</h2>
+            <ul type="none" class="standard-ul">
+                {% for standard in standard_list %}
+                    {% if standard.category_level == 3 %}
+                        <li id="{{ standard.title }}" class="standard-btn">
+                            <div class="standard-title"><span class="toggle-state">▶</span>
+                                {{ standard.title }}
+                            </div>
+                            <div class="standard-content wboard-w3">{{ standard.content | safe }}</div>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </li>
+    </div>
+{% endblock %}
+
+{% block footer %}
+<script type="text/javascript" src="{% static 'mysite/js/standard.js' %}"></script>
+{% endblock %}

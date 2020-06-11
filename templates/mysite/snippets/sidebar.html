@@ -1,0 +1,28 @@
+{% load mysite_tags %}
+
+<div class="side-content">
+    <div class="card mb-3">
+        <div class="card-header">
+            月別アーカイブ
+        </div>
+        <ul class="list-group list-group-flush">
+           {% render_post_links %}
+        </ul>
+
+        <div class="card-header">
+            カテゴリ
+        </div>
+        <ul class="list-group list-group-flush">
+           {% render_category_links %}
+        </ul>
+
+        <div class="card-header">
+            <a href="{% url 'mysite:calendar' %}">イベント</a>
+        </div>
+        <div class="clearfix" style="text-align:center;">
+            <a class="btn btn-info left" href="{% url 'mysite:calendar' %}?{{ prev_month | safe }}"> <i class="fas fa-caret-left"></i>　前月</a>
+            <a class="btn btn-info right" href="{% url 'mysite:calendar' %}?{{ next_month | safe }}"> 翌月　<i class="fas fa-caret-right"></i> </a>
+        </div>
+        {{ con_calendar | safe }}
+    </div>
+</div>

@@ -1,0 +1,57 @@
+{% extends "mysite/base.html" %}
+{% load static %}
+
+{% block header %}
+    <link rel="stylesheet" type="text/css" href="{% static 'mysite/css/top.css' %}">
+{% endblock %}
+
+{% block container %}
+    <ul id="card-nav">
+        <div class="row">
+            <li class="col-sm-6 col-md-3">
+                <a href="{% url 'mysite:post_index' %}">
+                    <div class="card">
+                        <img class="card-img-top" src="{% static 'mysite/image/1.jpg' %}" alt="Card image cap">
+                        <div class="card-block">
+                            <h4 class="card-title">記事一覧</h4>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="col-sm-6 col-md-3">
+                <a href="{% url 'mysite:calendar' %}">
+                    <div class="card">
+                        <img class="card-img-top" src="{% static 'mysite/image/1.jpg' %}" alt="Card image cap">
+                        <div class="card-block">
+                            <h4 class="card-title">イベント</h4>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="col-sm-6 col-md-3">
+                <a href="{% url 'mysite:circular_index' %}">
+                    <div class="card">
+                        <img class="card-img-top" src="{% static 'mysite/image/1.jpg' %}" alt="Card image cap">
+                        <div class="card-block">
+                            <h4 class="card-title">回覧</h4>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="col-sm-6 col-md-3">
+                <a href="{% url 'mysite:standard_index' %}">
+                    <div class="card">
+                        <img class="card-img-top" src="{% static 'mysite/image/1.jpg' %}" alt="Card image cap">
+                        <div class="card-block">
+                            <h4 class="card-title">基本情報</h4>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </div>
+    </ul>
+{% endblock %}
+
+{% block footer %}
+    <script src="{% static 'mysite/js/top.js' %}" charset="utf-8"></script>
+{% endblock %}
