@@ -1,0 +1,162 @@
+#header img {
+    height: 180px;
+}
+
+#topline {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: 27px;
+    text-align: right;
+    background-color:#F7F7F7 ;
+    font-size: 14px;
+    line-height: 2;
+}
+  
+li.topline{
+    padding-right: 30px;
+    display: inline;
+}
+  
+li.topline > a{
+    color: rgb(88, 86, 86);
+}
+
+body{
+    color:gray;
+    font-size: 16pt;
+    font-family: 'Montserrat';
+    width: 100%;
+    background-color: #fafafa;
+}
+
+#header{
+    text-align:center;
+    background:white;
+    border-top: rgb(236, 233, 233) solid 1px;
+    border-bottom: rgb(236, 233, 233) solid 1px;
+}
+
+h2{
+    margin-top: 20px;
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+h4{
+    margin-bottom: 0px;
+}
+
+#setting-modal {
+    display: none;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+}
+  
+  /* Modal Content/Box */
+#setting-modal-content {
+    width: 50%;
+    height:80%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#questionnaire-modal {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+}
+  
+  /* Modal Content/Box */
+#questionnaire-modal-content {
+    width: 50%;
+    height:80%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.alert-success{
+    margin: 0 auto;
+    text-align: center;
+    padding:30px 20px 20px 20px;
+}
+
+  /* 黒板 */
+.blackboard {
+    line-height: 200%;
+    position: relative;
+    margin: 0 auto 1.5rem;
+    padding: 1.5rem 1rem;
+    font-size: 1.2rem;
+    color: #fff;
+    border: 2px solid #000;
+    border-radius: 5px;
+    box-shadow: 0 0 0 4px #fff inset;
+    background-color: rgba(0, 0, 0, 0.705);
+}
+  
+.blackboard a {
+    margin-left: 1.7rem;
+    text-decoration: none;
+    color: #fff;
+}
+  
+.blackboard .blink-before:hover:before {
+    content: '▶';
+    position: absolute;
+    left: 1rem;
+    animation: blink 1.4s infinite;
+}
+  
+.blackboard p:last-of-type {
+    margin-bottom: 0;
+}
+  
+/* 回り込み */
+.float-r {
+    float: right;
+}
+
+ /* 回り込み解除 */
+.clearfix {
+    zoom: 1;
+}
+  
+.clearfix:after {
+    clear: both;
+    content: "";
+    display: block;
+}
+
+ul.pagination{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination{
+    display: block;
+}
+  
+li.page-item{
+    display: inline-block;
+}
+
+   /* 点滅 */
+@keyframes blink {
+    50% { opacity: 0; }
+}
+  
+@-webkit-keyframes blink {
+    50% { opacity: 0; }
+}

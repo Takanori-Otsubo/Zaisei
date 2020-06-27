@@ -1,0 +1,104 @@
+#comment{
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+.comment-detail {
+    width: 100%;
+    margin: 20px 0px 0px 20px;
+    overflow: hidden;
+}
+  
+.comment-user{
+    float: left;
+    margin-right: -60px;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+.comment-detail img{
+    max-width: 100%;
+    height: auto;
+    width /***/:auto;
+    border: solid 3px #d7ebfe;
+    border-radius: 50%;
+}
+
+select{
+    max-width: 100%;
+    height: auto;
+    width /***/:auto;
+}
+
+textarea {
+    max-width: 100%;
+    height: auto;
+    width /***/:auto;
+}
+
+.comment-user-detail{
+    font-size: 14px;
+    margin-left: -5px;
+}
+
+.says {
+    display: inline-block;
+    position: relative; 
+    margin: 0 0 0 60px;
+    padding: 10px;
+    border-radius: 12px;
+    background: #edf1ee;
+    word-wrap: break-word;
+}
+  
+.says:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 3px; 
+    left: -19px;
+    border: 8px solid transparent;
+    border-right: 18px solid #edf1ee;
+    -webkit-transform: rotate(35deg);
+    transform: rotate(35deg);
+}
+  
+.says p {
+    margin: 0 ;
+    padding: 0;
+}
+
+.comment-posted-at{
+    font-size: 14px;
+    color: blue;
+}
+
+/*以下、③右側の緑コメント*/
+.mycomment {
+    color: black;
+    font-size: 18px;
+    display: inline-block;
+    position: relative; 
+    margin: 20px 10px 20px 0;
+    padding: 8px 8px 8px 15px;
+    border-radius: 12px;
+    background: #30e852;
+    word-wrap: break-word;
+}
+
+.mycomment p{
+    margin: 0 ;
+    padding: 0;
+}
+
+.mycomment:after {
+    content: "";
+    position: absolute;
+    top: 3px; 
+    right: -19px;
+    border: 8px solid transparent;
+    border-left: 18px solid #30e852;
+    -webkit-transform: rotate(-35deg);
+    transform: rotate(-35deg);
+}

@@ -1,0 +1,48 @@
+#card-nav {
+  margin: 20px auto;
+}
+
+#card-nav li {
+  list-style-type: none;
+}
+
+.card:hover{
+  cursor: pointer;
+}
+
+.card-title{
+  text-align: center;
+  padding-top: 10px;
+  color: black;
+}
+
+ul{
+  padding-inline-start: 0px;
+}
+
+.col-md-3{
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.col-sm-6{
+  margin-bottom:20px;
+}
+
+.card{
+  border-radius: 20px;
+}
+
+.card-img-top {
+  width: 100%;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.article-card{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 40px 20px 40px 20px;
+  background: white;
+  border: rgb(236, 233, 233) solid 1px;
+}

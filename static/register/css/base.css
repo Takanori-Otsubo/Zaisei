@@ -1,0 +1,45 @@
+#topline {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: 27px;
+    text-align: right;
+    background-color:#F7F7F7 ;
+    font-size: 14px;
+    line-height: 2;
+}
+  
+li.topline{
+    padding-right: 30px;
+    display: inline;
+}
+  
+li.topline > a{
+    color: rgb(88, 86, 86);
+}
+
+body{
+    color:gray;
+    font-size: 16pt;
+    font-family: 'Montserrat';
+    width: 100%;
+    background-color: #fafafa;
+}
+
+#header{
+    text-align:center;
+    background:white;
+    border-top: rgb(236, 233, 233) solid 1px;
+    border-bottom: rgb(236, 233, 233) solid 1px;
+}
+
+h2{
+    margin-top: 20px;
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+h4{
+    margin-bottom: 0px;
+}
+
